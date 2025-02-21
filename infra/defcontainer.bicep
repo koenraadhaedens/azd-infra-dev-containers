@@ -1,6 +1,8 @@
 param location string
 param containerImage string
 
+var containerName = 'container${uniqueString(resourceGroup().id)}'
+
 @secure()
 param winVMPassword string
 
@@ -10,7 +12,7 @@ resource containerInstance 'Microsoft.ContainerInstance/containerGroups@2021-03-
   properties: {
     containers: [
       {
-        name: 'myContainer'
+        name: containerName
         properties: {
           image: containerImage
           ports: [
