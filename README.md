@@ -38,10 +38,11 @@ This process takes approximately **2 minutes**, after which your own web-based V
 ✅ Quick deployment using `azd`  
 ✅ Secure access with password authentication  
 
-## 🛠 Requirements
+## 🛠 Requirements If you use Cloud Shell
 - An active **Azure subscription**
 - Access to **Azure Cloud Shell**
-- **Git** installed in Cloud Shell
+## 🛠 Requirements If you use Local pc
+- **Git** 
 - **Azure Developer CLI (azd)** installed
 
 ## 📖 More Information
