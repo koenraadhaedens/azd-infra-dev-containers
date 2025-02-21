@@ -38,3 +38,4 @@ module aci './defcontainer.bicep' = {
   }
 }
 
+output containerUrl string = aci.outputs.containerUrl
