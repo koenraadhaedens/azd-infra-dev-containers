@@ -46,3 +46,5 @@ resource containerInstance 'Microsoft.ContainerInstance/containerGroups@2021-03-
     }
   }
 }
+
+output containerUrl string = 'https://${containerInstance.properties.ipAddress.fqdn}:443'

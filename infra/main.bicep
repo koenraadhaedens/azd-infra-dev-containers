@@ -28,7 +28,7 @@ resource rg 'Microsoft.Resources/resourceGroups@2022-09-01' = {
   tags: tags
 }
 
-module hvhost './defcontainer.bicep' = {
+module aci './defcontainer.bicep' = {
   scope: rg
   name: 'devpcdefcontainer'
   params: {
@@ -38,3 +38,4 @@ module hvhost './defcontainer.bicep' = {
   }
 }
 
+output containerUrl string = aci.outputs.containerUrl
