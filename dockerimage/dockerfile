@@ -1,0 +1,60 @@
+# Use an official Ubuntu as a parent image
+FROM ubuntu:20.04
+
+# Set environment variables
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install necessary packages
+RUN apt-get update && apt-get install -y \
+    curl \
+    wget \
+    gnupg \
+    software-properties-common \
+    apt-transport-https \
+    ca-certificates \
+    lsb-release \
+    nginx \
+    python3 \
+    python3-pip \
+    nodejs \
+    npm \
+    openssl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Docker
+RUN curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh
+
+# Install .NET SDK
+RUN wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb \
+    && dpkg -i packages-microsoft-prod.deb \
+    && apt-get update \
+    && apt-get install -y dotnet-sdk-6.0
+
+# Install code-server (VS Code Web)
+RUN curl -fsSL https://code-server.dev/install.sh | sh
+
+# Install Azure Developer CLI (azd)
+RUN curl -fsSL https://aka.ms/install-azd.sh | bash
+
+# Generate a self-signed certificate
+RUN mkdir -p /etc/nginx/ssl && \
+    openssl genpkey -algorithm RSA -out /etc/nginx/ssl/selfsigned.key -pkeyopt rsa_keygen_bits:2048 && \
+    openssl req -new -x509 -key /etc/nginx/ssl/selfsigned.key -out /etc/nginx/ssl/selfsigned.crt -days 365 \
+    -subj "/C=US/ST=State/L=City/O=Organization/OU=Department/CN=your_domain.com"
+
+# Copy Nginx configuration file
+COPY nginx.conf /etc/nginx/sites-available/default
+
+# Script to set code-server password
+COPY set-password.sh /usr/bin/set-password.sh
+RUN chmod +x /usr/bin/set-password.sh
+
+# Script to start services
+COPY start-services.sh /usr/bin/start-services.sh
+RUN chmod +x /usr/bin/start-services.sh
+
+# Expose ports
+EXPOSE 8080 80 443
+
+# Start services
+CMD ["/usr/bin/start-services.sh"]
