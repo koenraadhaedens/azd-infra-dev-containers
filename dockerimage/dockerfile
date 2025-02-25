@@ -48,7 +48,10 @@ RUN apt-get update && apt-get install -y wget apt-transport-https software-prope
     dpkg -i packages-microsoft-prod.deb && \
     apt-get update && \
     apt-get install -y powershell && \
-    rm -rf /var/lib/apt/lists/* packages-microsoft-prod.deb    
+    rm -rf /var/lib/apt/lists/* packages-microsoft-prod.deb   
+    
+# Install Azure CLI
+RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash    
 
 # Copy Nginx configuration file
 COPY nginx.conf /etc/nginx/sites-available/default

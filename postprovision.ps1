@@ -10,8 +10,7 @@ $deploymentData = @{
     User = $env:USERNAME
     Machine = $env:AZUREPS_HOST_ENVIRONMENT
     CommitHash = (git rev-parse HEAD)
-    AzureUser = $(az account show --query user.name -o tsv)
-} | ConvertTo-Json -Depth 10
+  } | ConvertTo-Json -Depth 10
 
 Invoke-RestMethod -Uri $webhookUrl -Method Post -Body $deploymentData -ContentType "application/json"
 Write-Output "Stats Tracked"
