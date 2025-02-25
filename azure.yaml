@@ -6,6 +6,6 @@ metadata:
 hooks:
   postprovision:
     shell: pwsh
-    run: azd env get-values > .env
+    run: ./postprovision.ps1
     continueOnError: false
     interactive: true
