@@ -1,5 +1,4 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
-
 name: azd-infra-dev-containers
 metadata:
   template: azd-infra-dev-containers
@@ -8,6 +7,5 @@ hooks:
   postprovision:
     shell: pwsh
     run: azd env get-values > .env
-    run: ./postprovision.ps1
     continueOnError: false
     interactive: true
