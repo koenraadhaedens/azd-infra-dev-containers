@@ -1,4 +1,4 @@
-
+azd env get-values > .env
 $containerUrl= $env:containerUrl
 
 # sending stats to table please comment out if you do not want this
