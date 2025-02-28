@@ -4,7 +4,7 @@ param containerImage string
 var containerName = 'container${uniqueString(resourceGroup().id)}'
 
 @secure()
-param winVMPassword string
+param VSCodeWebPassword string
 
 resource containerInstance 'Microsoft.ContainerInstance/containerGroups@2021-03-01' = {
   name: 'myContainerGroup'
@@ -24,7 +24,7 @@ resource containerInstance 'Microsoft.ContainerInstance/containerGroups@2021-03-
           environmentVariables: [
             {
               name: 'PASSWORD'
-              secureValue: winVMPassword
+              secureValue: VSCodeWebPassword
             }
           ]
           resources: {

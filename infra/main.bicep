@@ -11,7 +11,7 @@ param location string
 
 @secure()
 @description('Password for VS Code login')
-param winVMPassword string //no value specified, so user will get prompted for it during deployment
+param VSCodeWebPassword string //no value specified, so user will get prompted for it during deployment
 
 // Tags that should be applied to all resources.
 // 
@@ -33,7 +33,7 @@ module aci './defcontainer.bicep' = {
   name: 'devpcdefcontainer'
   params: {
     location: location
-    winVMPassword: winVMPassword //no value specified, so user will get prompted for it during deployment
+    VSCodeWebPassword: VSCodeWebPassword //no value specified, so user will get prompted for it during deployment
     containerImage: 'acrdefcontainer.azurecr.io/my-dev-environment:latest'
   }
 }
