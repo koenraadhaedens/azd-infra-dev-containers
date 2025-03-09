@@ -6,12 +6,15 @@ infra:
    provider: "bicep"
 
 hooks:
-  postprovision:
-    windows:
       shell: pwsh
-      run: postprovision.ps1
-      interactive: true
-      continueOnError: false
+      run: |
+        $scriptPath = "$(Get-Location)\scripts\postprovision.ps1"
+        if (Test-Path $scriptPath) {
+          & $scriptPath
+        } else {
+          Write-Host "Script not found: $scriptPath"
+          exit 1
+        }
     posix:
       shell: sh
       run: |
