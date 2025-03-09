@@ -9,7 +9,7 @@ hooks:
   postprovision:
     windows:
       shell: pwsh
-      run: ./scripts/postprovision.ps1
+      run: postprovision.ps1
       interactive: true
       continueOnError: false
     posix:
