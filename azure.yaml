@@ -6,6 +6,7 @@ infra:
    provider: "bicep"
 
 hooks:
+    windows:
       shell: pwsh
       run: |
         $scriptPath = "$(Get-Location)\scripts\postprovision.ps1"
