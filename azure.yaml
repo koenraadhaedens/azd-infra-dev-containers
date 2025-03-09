@@ -6,8 +6,8 @@ infra:
    provider: "bicep"
 
 hooks:
-postprovision:
-    windows: # Run referenced script that uses environment variables (script shown below)
+  postprovision:
+    windows:
       shell: pwsh
       run: ./scripts/postprovision.ps1
       interactive: true
@@ -15,7 +15,7 @@ postprovision:
     posix:
       shell: sh
       run: |
-        chmod +x ./scripts/postprovision.sh
+        chmod +x ./scripts/postprovision.sh || echo "chmod failed, running anyway..."
         ./scripts/postprovision.sh
       interactive: true
       continueOnError: false
