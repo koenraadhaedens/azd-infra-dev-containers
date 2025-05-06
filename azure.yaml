@@ -7,20 +7,20 @@ infra:
 
 hooks:
   postprovision:
-      windows:
-        shell: pwsh
-        run: |
-          $scriptPath = "$(Get-Location)\scripts\postprovision.ps1"
-          if (Test-Path $scriptPath) {
-            & $scriptPath
-          } else {
-            Write-Host "Script not found: $scriptPath"
-            exit 1
-          }
-      posix:
-        shell: sh
-        run: |
-          chmod +x ./scripts/postprovision.sh || echo "chmod failed, running anyway..."
-          ./scripts/postprovision.sh
-        interactive: true
-        continueOnError: false
+    windows:
+      shell: pwsh
+      run: |
+        $scriptPath = "$(Get-Location)\scripts\postprovision.ps1"
+        if (Test-Path $scriptPath) {
+          & $scriptPath
+        } else {
+          Write-Host "Script not found: $scriptPath"
+          exit 1
+        }
+    posix:
+      shell: sh
+      run: |
+        chmod +x ./scripts/postprovision.sh || echo "chmod failed, running anyway..."
+        ./scripts/postprovision.sh
+      interactive: true
+      continueOnError: false
