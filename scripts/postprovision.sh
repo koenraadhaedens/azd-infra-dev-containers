@@ -13,6 +13,7 @@ location=$AZURE_LOCATION
  commitHash=$(git rev-parse HEAD)
  deploymentData=$(jq -n --arg deployment "azd-infra-dev-containers" --arg location "$location" --arg environmentName "$environmentName" --arg machine "$AZUREPS_HOST_ENVIRONMENT" --arg commitHash "$commitHash" '{Deployment: $deployment, location: $location, environmentName: $environmentName, Machine: $machine, CommitHash: $commitHash}')
  curl -X POST -H "Content-Type: application/json" -d "$deploymentData" "$webhookUrl"
- echo " "
+ echo "---------------------------------"
  echo "Stats Tracked to Table"
  echo "To access please use browser to go to $containerUrl Please click advanced on the SSL warning to conitnue and use password you setup to login"
+echo "---------------------------------"
