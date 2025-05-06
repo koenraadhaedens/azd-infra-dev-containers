@@ -15,6 +15,7 @@ $deploymentData = @{
     CommitHash = (git rev-parse HEAD)
   } | ConvertTo-Json -Depth 10
 
+# sending stats to table please comment out if you do not want this
 Invoke-RestMethod -Uri $webhookUrl -Method Post -Body $deploymentData -ContentType "application/json"
 Write-Output "Stats Tracked"
 
