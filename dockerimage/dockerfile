@@ -5,7 +5,7 @@ FROM ubuntu:20.04
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install necessary packages
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     curl \
     wget \
     gnupg \
@@ -22,13 +22,23 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Docker
-RUN curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh
+# RUN curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh
+# commented out beceause the vscode server does not allow ro run
 
 # Install .NET SDK
 RUN wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb \
     && dpkg -i packages-microsoft-prod.deb \
     && apt-get update \
     && apt-get install -y dotnet-sdk-6.0
+    && rm -rf /var/lib/apt/lists/*
+
+# Install .NET 8 SDK
+RUN wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb \
+    && dpkg -i packages-microsoft-prod.deb \
+    && rm packages-microsoft-prod.deb \
+    && apt-get update \
+    && apt-get install -y dotnet-sdk-8.0 \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install code-server (VS Code Web)
 RUN curl -fsSL https://code-server.dev/install.sh | sh
