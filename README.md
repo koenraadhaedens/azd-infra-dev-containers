@@ -6,6 +6,7 @@ This repository provides an automated way to deploy a development environment in
 
 This deployment will take approximately 3 minutes. If you notice anything not working or have an idea, please report an issue here on GitHub.
 
+The deployment will collect some basic statistics. If you do not want this, please comment out the relevant lines in the post-provisioning scripts.
 
 ## 🚀 Quick Start
 
