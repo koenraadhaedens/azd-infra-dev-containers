@@ -2,6 +2,7 @@ param location string
 param containerImage string
 
 var containerName = 'container${uniqueString(resourceGroup().id)}'
+var dnsLabel = 'mydevcontainer${uniqueString(resourceGroup().id)}'
 
 @secure()
 param VSCodeWebPassword string
@@ -45,8 +46,9 @@ resource containerInstance 'Microsoft.ContainerInstance/containerGroups@2021-03-
           protocol: 'TCP'
         }
       ]
+      dnsNameLabel: dnsLabel
     }
   }
 }
 
-output containerUrl string = 'Please go to https://${containerInstance.properties.ipAddress.ip}:443'
+output containerUrl string = 'https://${dnsLabel}.${location}.azurecontainer.io:443'
