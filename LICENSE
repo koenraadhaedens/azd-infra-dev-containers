@@ -1,0 +1,9 @@
+# LICENSE
+
+This project is provided "as is", without warranty of any kind, express or implied. By using this project, you acknowledge and agree that:
+
+- The authors and contributors are not responsible for any costs, charges, or fees incurred through the use or deployment of this project or its associated resources.
+- All security configurations, access controls, and data protection measures are the responsibility of the user. The authors and contributors disclaim any liability for security incidents, data breaches, or unauthorized access resulting from the use of this project.
+- You assume full responsibility for managing, securing, and cleaning up any resources deployed as part of this project.
+
+By using this project, you waive any claims against the authors or contributors related to costs, billing, or security issues.
