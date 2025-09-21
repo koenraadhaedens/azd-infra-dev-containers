@@ -2,7 +2,7 @@
 
 # Azure Dev Containers Infrastructure
 
-This repository provides an automated way to deploy a development environment inside a container, accessible as a web-based VS Code instance. The container includes all essential dependencies like Python, Node.js, and .NET, making it a ready-to-use development workspace.
+This repository provides an automated way to deploy a development environment inside a container, accessible as a web-based VS Code instance. The container includes all essential dependencies like Git,  Python, Node.js, and .NET, making it a ready-to-use development workspace.
 
 This deployment will take approximately 3 minutes. If you notice anything not working or have an idea, please report an issue here on GitHub.
 
@@ -38,7 +38,7 @@ This process takes approximately **2 minutes**, after which your own web-based V
 
 ## 📌 Features
 ✅ Web-based VS Code instance  
-✅ Pre-installed dependencies: Python, Node.js, .NET  
+✅ Pre-installed dependencies: Python, Node.js, .NET, GIT
 ✅ Quick deployment using `azd`  
 ✅ Secure access with password authentication  
 
