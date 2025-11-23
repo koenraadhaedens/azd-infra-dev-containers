@@ -20,6 +20,7 @@ param VSCodeWebPassword string //no value specified, so user will get prompted f
 //   tags: union(tags, { 'azd-service-name': <service name in azure.yaml> })
 var tags = {
   'azd-env-name': environmentName
+  'SecurityControl': 'Ignore'
 }
 
 resource rg 'Microsoft.Resources/resourceGroups@2022-09-01' = {
