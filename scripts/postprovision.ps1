@@ -5,7 +5,7 @@ $location = $env:AZURE_LOCATION
 
 # sending stats to table please comment out if you do not want this
 
-$webhookUrl = "https://8116ebc5-9750-4a45-bb68-3623eef692f3.webhook.ne.azure-automation.net/webhooks?token=ZEwDwUSa225CZVgKPQ7ZDDe6K%2f8k9sMl2ou1FJlYpMA%3d"
+$webhookUrl = "https://8116ebc5-9750-4a45-bb68-3623eef692f3.webhook.ne.azure-automation.net/webhooks?token=mkbmnnnhgDsL20iey6qRj9Vc0ylCVg%2bpeZ1Yym7rsZs%3d"
 
 $deploymentData = @{
     Deployment = "azd-infra-dev-containers"
