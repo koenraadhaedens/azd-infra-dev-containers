@@ -25,7 +25,7 @@ cd azd-infra-dev-containers
 ### 3️⃣ Deploy the Container
 Execute the following command to set up the environment:
 ```sh
-azd login auth
+azd auth login
 azd up
 ```
 This process takes approximately **2 minutes**, after which your own web-based VS Code instance will be ready.
